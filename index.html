@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>배경 제거 — removebg</title>
+  <meta name="description" content="브라우저에서 바로 이미지 배경을 제거하는 무료 툴. 이미지는 서버로 전송되지 않습니다." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="app__header">
+      <h1 class="app__title">🪄 배경 제거</h1>
+      <p class="app__subtitle">이미지를 올리면 브라우저에서 바로 배경을 지워드려요.</p>
+    </header>
+
+    <!-- (a) 업로드 대기 -->
+    <section id="dropzone" class="dropzone" aria-label="이미지 업로드 영역">
+      <input id="fileInput" type="file" accept="image/*" hidden />
+      <div class="dropzone__inner">
+        <div class="dropzone__icon">⬆️</div>
+        <p class="dropzone__text">이미지를 여기로 끌어다 놓거나 클릭해서 선택하세요</p>
+        <button id="pickBtn" type="button" class="btn btn--primary">이미지 선택</button>
+        <p class="dropzone__hint">PNG · JPG · WEBP · 최대 25MB</p>
+      </div>
+    </section>
+
+    <!-- (b) 처리 중 -->
+    <section id="processing" class="panel" hidden>
+      <div class="spinner" aria-hidden="true"></div>
+      <p id="progressText" class="panel__text">배경 제거 중…</p>
+      <div class="progress"><div id="progressBar" class="progress__bar"></div></div>
+      <p class="panel__hint">첫 실행에는 AI 모델(수십 MB)을 내려받아 시간이 걸릴 수 있어요.</p>
+    </section>
+
+    <!-- (c) 결과 -->
+    <section id="result" class="panel" hidden>
+      <div id="compareMount" class="compare"></div>
+      <div class="actions">
+        <a id="downloadBtn" class="btn btn--primary" download>PNG 다운로드</a>
+        <button id="resetBtn" type="button" class="btn btn--ghost">다른 이미지</button>
+      </div>
+    </section>
+
+    <!-- (d) 에러 -->
+    <section id="error" class="panel panel--error" hidden>
+      <p id="errorText" class="panel__text">문제가 발생했어요.</p>
+      <button id="retryBtn" type="button" class="btn btn--ghost">다시 시도</button>
+    </section>
+
+    <footer class="app__footer">
+      <p>🔒 이미지는 서버로 전송되지 않고 브라우저에서만 처리됩니다.</p>
+    </footer>
+  </main>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

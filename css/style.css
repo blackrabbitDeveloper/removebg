@@ -1,0 +1,118 @@
+:root {
+  --bg: #0f1216;
+  --surface: #171b21;
+  --surface-2: #1f242c;
+  --border: #2a313b;
+  --text: #e6e9ee;
+  --muted: #9aa4b2;
+  --primary: #6c8cff;
+  --primary-hover: #869dff;
+  --danger: #ff6b6b;
+  --radius: 14px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  line-height: 1.5;
+}
+.app {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 20px 64px;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.app__header { text-align: center; }
+.app__title { font-size: 2rem; margin: 0 0 8px; }
+.app__subtitle { color: var(--muted); margin: 0; }
+
+/* dropzone */
+.dropzone {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 48px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color .15s, background .15s;
+}
+.dropzone.is-drag { border-color: var(--primary); background: var(--surface-2); }
+.dropzone__icon { font-size: 2.5rem; }
+.dropzone__text { margin: 12px 0; }
+.dropzone__hint { color: var(--muted); font-size: .85rem; margin: 12px 0 0; }
+
+/* panels */
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  text-align: center;
+}
+.panel--error { border-color: var(--danger); }
+.panel__text { margin: 0 0 8px; }
+.panel__hint { color: var(--muted); font-size: .85rem; margin: 12px 0 0; }
+
+/* progress */
+.progress { height: 8px; background: var(--surface-2); border-radius: 999px; overflow: hidden; margin: 16px auto 0; max-width: 320px; }
+.progress__bar { height: 100%; width: 0%; background: var(--primary); transition: width .2s; }
+.spinner {
+  width: 40px; height: 40px; margin: 0 auto 16px;
+  border: 4px solid var(--surface-2); border-top-color: var(--primary);
+  border-radius: 50%; animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* buttons */
+.btn {
+  display: inline-block; border: none; border-radius: 10px;
+  padding: 12px 20px; font-size: 1rem; font-weight: 600;
+  cursor: pointer; text-decoration: none; transition: background .15s, transform .05s;
+}
+.btn:active { transform: translateY(1px); }
+.btn--primary { background: var(--primary); color: #0b0e13; }
+.btn--primary:hover { background: var(--primary-hover); }
+.btn--ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
+.btn--ghost:hover { background: var(--surface-2); }
+.actions { display: flex; gap: 12px; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
+
+/* compare / checkerboard */
+.compare { position: relative; width: 100%; border-radius: 10px; overflow: hidden; user-select: none; touch-action: none; line-height: 0; }
+.checker {
+  background-image:
+    linear-gradient(45deg, #2a313b 25%, transparent 25%),
+    linear-gradient(-45deg, #2a313b 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #2a313b 75%),
+    linear-gradient(-45deg, transparent 75%, #2a313b 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+  background-color: #232830;
+}
+.compare__img { display: block; width: 100%; height: auto; }
+.compare__top { position: absolute; top: 0; left: 0; height: 100%; width: 50%; overflow: hidden; }
+.compare__top .compare__img { position: absolute; top: 0; left: 0; height: auto; max-width: none; }
+.compare__divider { position: absolute; top: 0; left: 50%; height: 100%; width: 2px; background: var(--primary); transform: translateX(-1px); cursor: ew-resize; touch-action: none; }
+.compare__handle {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 34px; height: 34px; border-radius: 50%; background: var(--primary); color: #0b0e13;
+  display: grid; place-items: center; font-size: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,.4);
+  line-height: 1;
+}
+.compare__label {
+  position: absolute; bottom: 8px; padding: 2px 8px; font-size: .75rem; border-radius: 6px;
+  background: rgba(0,0,0,.55); color: #fff; pointer-events: none; line-height: 1.4;
+}
+.compare__label--left { left: 8px; }
+.compare__label--right { right: 8px; }
+
+.app__footer { text-align: center; color: var(--muted); font-size: .85rem; margin-top: auto; }
+
+@media (max-width: 480px) {
+  .app { padding: 28px 14px 40px; }
+  .app__title { font-size: 1.6rem; }
+}
