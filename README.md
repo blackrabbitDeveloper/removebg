@@ -1,49 +1,51 @@
-# 🪄 removebg — 브라우저 배경 제거 툴
+<div align="center">
 
-이미지를 올리면 **브라우저 안에서** AI로 배경을 제거해 투명 PNG로 저장합니다.
-서버 전송 없이 로컬에서만 처리되어 개인정보에 안전합니다.
+# Background Remover
 
-👉 **바로 사용하기: https://blackrabbitdeveloper.github.io/removebg/**
+AI로 이미지 배경을 지우고 브러시로 결과를 다듬습니다.
 
-## ✨ 기능
+[![Open App](https://img.shields.io/badge/Open_App-E8795A?style=for-the-badge&logo=googlechrome&logoColor=white)](https://blackrabbitdeveloper.github.io/removebg/)
+[![Local First](https://img.shields.io/badge/Processing-Local_First-248A5A?style=for-the-badge)](#개인정보)
 
-- 드래그&드롭 / 클릭 업로드
-- 브라우저 내 AI 배경 제거 (오프라인·무료·API 키 불필요)
-- **브러시 보정**: 복원 브러시(지워진 곳 되살리기) / 지우개 브러시(남은 곳 지우기), 크기·강도 조절, 되돌리기·다시실행(Ctrl+Z)
-- Before/After 비교 슬라이더
+</div>
+
+> 서버 업로드나 API 키 없이 브라우저에서 동작하는 BlackRabbit Utils의 AI 이미지 도구입니다.
+
+## 주요 기능
+
+- 드래그 앤 드롭 이미지 선택
+- 브라우저 내 AI 배경 제거
+- 복원 및 지우개 브러시와 실행 취소·다시 실행
+- 원본과 결과 비교 슬라이더
 - 투명 PNG 다운로드
+- Dark/Light 공통 테마와 반응형 UI
 
-## 🛠 기술
+## 사용법
 
-- 무빌드 정적 사이트 (HTML / CSS / Vanilla ES Modules)
-- 배경 제거: [@imgly/background-removal](https://github.com/imgly/background-removal-js) (ONNX/WASM, CDN 로드)
-- 호스팅: GitHub Pages
+1. [Background Remover](https://blackrabbitdeveloper.github.io/removebg/)를 엽니다.
+2. PNG, JPEG 또는 WebP 이미지를 선택합니다.
+3. AI 처리 후 브러시로 마스크를 다듬습니다.
+4. 투명 PNG로 저장합니다.
 
-## 🧩 구조
-
-```
-index.html          레이아웃 (업로드 · 처리중 · 결과 · 에러 상태)
-css/style.css       다크 테마 · 반응형 · 체커보드 투명 배경
-js/bgremover.js     배경 제거 엔진 래퍼 (@imgly, publicPath 고정)
-js/editor.js        브러시 편집기 (알파 마스크, 복원/지우개, undo/redo)
-js/compare.js       Before/After 슬라이더
-js/main.js          업로드·상태전환·편집·다운로드·에러 오케스트레이션
-```
-
-## 💻 로컬 실행
+## 로컬 실행
 
 ```bash
-python -m http.server 8123
-# 브라우저에서 http://localhost:8123/ 접속
+npx serve . -l 8123
 ```
 
-## 📝 참고
+브라우저에서 <http://localhost:8123>을 엽니다. 첫 실행에는 AI 모델 다운로드로 시간이 걸릴 수 있습니다.
 
-- **첫 실행 시** AI 모델(수십 MB)을 내려받아 다소 시간이 걸릴 수 있습니다. 이후에는 브라우저에 캐시되어 빨라집니다.
-- 이미지는 어떤 서버로도 전송되지 않고 브라우저에서만 처리됩니다.
-- 인물·제품 등 주요 피사체가 뚜렷한 이미지에서 품질이 가장 좋습니다.
+## 기술
 
-## 📄 라이선스
+- Vanilla HTML, CSS, JavaScript ES Modules
+- `@imgly/background-removal`과 ONNX/WASM
+- GitHub Pages
 
-- 앱 코드: MIT
-- 배경 제거 모델/라이브러리는 [@imgly/background-removal](https://github.com/imgly/background-removal-js)의 라이선스를 따릅니다.
+## 개인정보
+
+이미지와 편집 결과는 별도 서버로 전송되지 않습니다. 배경 제거 모델은 CDN에서 내려받아 브라우저에서 실행합니다.
+
+## 라이선스
+
+- 애플리케이션 코드: [MIT](LICENSE)
+- 배경 제거 모델 및 라이브러리: `@imgly/background-removal` 라이선스 적용
