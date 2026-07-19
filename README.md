@@ -9,6 +9,7 @@
 
 - 드래그&드롭 / 클릭 업로드
 - 브라우저 내 AI 배경 제거 (오프라인·무료·API 키 불필요)
+- **브러시 보정**: 복원 브러시(지워진 곳 되살리기) / 지우개 브러시(남은 곳 지우기), 크기·강도 조절, 되돌리기·다시실행(Ctrl+Z)
 - Before/After 비교 슬라이더
 - 투명 PNG 다운로드
 
@@ -24,8 +25,9 @@
 index.html          레이아웃 (업로드 · 처리중 · 결과 · 에러 상태)
 css/style.css       다크 테마 · 반응형 · 체커보드 투명 배경
 js/bgremover.js     배경 제거 엔진 래퍼 (@imgly, publicPath 고정)
+js/editor.js        브러시 편집기 (알파 마스크, 복원/지우개, undo/redo)
 js/compare.js       Before/After 슬라이더
-js/main.js          업로드·상태전환·다운로드·에러 오케스트레이션
+js/main.js          업로드·상태전환·편집·다운로드·에러 오케스트레이션
 ```
 
 ## 💻 로컬 실행

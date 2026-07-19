@@ -34,9 +34,24 @@
       <p class="panel__hint">첫 실행에는 AI 모델(수십 MB)을 내려받아 시간이 걸릴 수 있어요.</p>
     </section>
 
-    <!-- (c) 결과 -->
+    <!-- (c) 결과 / 편집 -->
     <section id="result" class="panel" hidden>
-      <div id="compareMount" class="compare"></div>
+      <div id="editorMount" class="editor__stage"></div>
+      <div id="compareMount" class="compare" hidden></div>
+
+      <div id="toolbar" class="toolbar">
+        <div class="seg" role="group" aria-label="브러시 모드">
+          <button id="modeRestore" type="button" class="seg__btn is-active">🖌 복원</button>
+          <button id="modeErase" type="button" class="seg__btn">🧽 지우기</button>
+        </div>
+        <label class="toolbar__field">크기 <input id="brushSize" type="range" min="5" max="150" value="40" /></label>
+        <label class="toolbar__field">강도 <input id="brushHardness" type="range" min="0" max="100" value="60" /></label>
+        <button id="undoBtn" type="button" class="btn btn--ghost btn--sm" disabled>↶ 되돌리기</button>
+        <button id="redoBtn" type="button" class="btn btn--ghost btn--sm" disabled>↷ 다시실행</button>
+        <button id="compareToggle" type="button" class="btn btn--ghost btn--sm">◐ 원본과 비교</button>
+      </div>
+      <p class="panel__hint">복원/지우기 브러시로 결과를 다듬어 보세요. (Ctrl+Z 되돌리기)</p>
+
       <div class="actions">
         <a id="downloadBtn" class="btn btn--primary" download>PNG 다운로드</a>
         <button id="resetBtn" type="button" class="btn btn--ghost">다른 이미지</button>
